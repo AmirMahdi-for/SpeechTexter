@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Ussistant\Models;
+namespace App\SpeeechTexter\Models;
 
 use App\Models\File;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Ussistant extends Model
+class SpeeechTexter extends Model
 {
     use HasFactory, SoftDeletes;
 

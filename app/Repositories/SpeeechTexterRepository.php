@@ -1,41 +1,40 @@
 <?php
 
-namespace App\Services\Ussistant\Repositories;
+namespace App\SpeeechTexter\Repositories;
 
 use Illuminate\Support\Facades\Http;
 use App\Helper\ConvertsCamelCaseToSnakeCase;
-use App\Services\Ussistant\Models\Ussistant;
+use App\Repositories\Interfaces\SpeeechTexterRepositoryInterface;
+use App\Services\SpeeechTexter\Models\SpeeechTexter;
 use Illuminate\Http\Client\RequestException;
 use Illuminate\Http\Client\ConnectionException;
-use App\Services\Ussistant\Repositories\Interfaces\UssistantRepositoryInterface;
 use Illuminate\Support\Facades\Log;
 
-class UssistantRepository implements UssistantRepositoryInterface
+class SpeeechTexterRepository implements SpeeechTexterRepositoryInterface
 {
-   use ConvertsCamelCaseToSnakeCase;
 
    public function speechToText(int $userId, $fileId, array $parameters) 
    {
       try {
          $response = Http::withHeaders([
             'Accept' => 'application/json',
-            'X-API-Key' => env('USSISTANT_X_API_KEY'),
+            'X-API-Key' => env('SpeeechTexter_X_API_KEY'),
          ])->attach(
             'file',
             file_get_contents($parameters['file']->getPathname()),
             $parameters['file']->getClientOriginalName(),
-         )->post(env('USSISTANT_VOICE_API'));
+         )->post(env('SpeeechTexter_VOICE_API'));
 
          $statusCode = $response->status();
          $responseBody = json_decode($response->body(), true);
 
-         $ussistant = Ussistant::create([
+         $SpeeechTexter = SpeeechTexter::create([
             "file_id" => $fileId,
             "result" => $responseBody,
             "response_status_code" => $statusCode,
          ]);
 
-         return $ussistant;
+         return $SpeeechTexter;
       }
       catch (ConnectionException $e) {
          Log::info($e);
@@ -51,7 +50,7 @@ class UssistantRepository implements UssistantRepositoryInterface
 
    private function handleError($fileId, $statusCode, $errorMessage)
    {
-      Ussistant::create([
+      SpeeechTexter::create([
          "file_id" => $fileId,
          "text_result" => null,
          "response_status_code" => $statusCode,

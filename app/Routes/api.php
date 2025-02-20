@@ -1,6 +1,6 @@
 <?php
 
-use App\Services\Ussistant\Controllers\UssistantController;
+use App\Services\SpeeechTexter\Controllers\SpeeechTexterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,10 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::prefix('ussistant')->group(function () {
+Route::prefix('SpeeechTexter')->group(function () {
     
     Route::prefix('admin')->middleware('auth:sanctum')->group(function () {
-        Route::get('list',  [UssistantController::class, 'list']);
+        Route::get('list',  [SpeeechTexterController::class, 'list']);
     });
 
 });
