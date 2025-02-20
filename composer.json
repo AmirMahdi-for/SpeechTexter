@@ -12,5 +12,6 @@
                 "SpeeechTexter\\Providers\\SpeeechTexterServiceProvider"
             ]
         }
-    }
+    },
+    "license": "MIT"
 }
