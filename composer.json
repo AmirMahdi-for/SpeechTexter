@@ -1,6 +1,8 @@
 {
     "name": "amirmahdi-for/speeech-texter",
-    "description": "description",
+    "description": "A Laravel package for speech-to-text processing.",
+    "type": "library",
+    "license": "MIT",
     "autoload": {
         "psr-4": {
             "SpeeechTexter\\": "app/"
@@ -13,5 +15,7 @@
             ]
         }
     },
-    "license": "MIT"
+    "require": {},
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
