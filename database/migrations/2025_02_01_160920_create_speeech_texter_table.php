@@ -17,7 +17,6 @@ return new class extends Migration
             $table->json('result')->nullable();
             $table->integer('response_status_code');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('ussistants');
+        Schema::dropIfExists('speeech_texter');
     }
 };
