@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Providers;
+namespace SpeeechTexter\Providers;
 
-use App\Repositories\Interfaces\SpeeechTexterRepositoryInterface;
-use App\SpeeechTexter\Repositories\SpeeechTexterRepository;
+use SpeeechTexter\Repositories\Interfaces\SpeeechTexterRepositoryInterface;
+use SpeeechTexter\Repositories\SpeeechTexterRepository;
 use Illuminate\Support\ServiceProvider;
 
-class SpeeechTexterServiceProvider extends SpeeechTexterServiceProvider
+class SpeeechTexterServiceProvider extends ServiceProvider
 {
     public function register(): void
     {

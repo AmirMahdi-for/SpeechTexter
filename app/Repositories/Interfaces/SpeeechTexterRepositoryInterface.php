@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories\Interfaces;
+namespace SpeeechTexter\Repositories\Interfaces;
 
 interface SpeeechTexterRepositoryInterface
 {
