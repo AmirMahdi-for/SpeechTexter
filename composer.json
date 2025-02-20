@@ -1,0 +1,16 @@
+{
+    "name": "amirmahdi-for/speeech-texter",
+    "description": "description",
+    "autoload": {
+        "psr-4": {
+            "SpeeechTexter\\": "app/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "SpeeechTexter\\Providers\\SpeeechTexterServiceProvider"
+            ]
+        }
+    }
+}
