@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ussistants', function (Blueprint $table) {
+        Schema::create('speeech_texter', function (Blueprint $table) {
             $table->id();
             $table->integer('file_id');
             $table->json('result')->nullable();

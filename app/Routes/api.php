@@ -1,7 +1,8 @@
 <?php
 
-use App\Services\SpeeechTexter\Controllers\SpeeechTexterController;
+use App\Services\SpeeechTexter\Controllers\SpeeecTexterController;
 use Illuminate\Support\Facades\Route;
+use SpeeechTexter\Controllers\SpeeechTexterController;
 
 /*
 |--------------------------------------------------------------------------

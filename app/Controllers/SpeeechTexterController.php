@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Services\SpeeechTexter\Controllers;
+namespace SpeeechTexter\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\SpeeechTexter\Repositories\Interfaces\SpeeechTexterRepositoryInterface;
+use SpeeechTexter\Repositories\Interfaces\SpeeechTexterRepositoryInterface;
 
 class SpeeechTexterController extends Controller
 {

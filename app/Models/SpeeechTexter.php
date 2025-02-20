@@ -13,6 +13,8 @@ class SpeeechTexter extends Model
 
     protected $guarded = ['id'];
 
+    protected $table = 'speeech_texter';
+
     protected $casts = [
         'result' => 'json',
     ];
