@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Services\Ussistant\Resources\Admin;
+namespace SpeeechTexter\Resources\Admin;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class UssistantResource extends JsonResource
+class SpeeechTexterResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
