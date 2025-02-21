@@ -15,9 +15,7 @@
             ]
         }
     },
-    "require": {
-        "illuminate/support": "^10.0"
-    },
+    "require": {},
     "minimum-stability": "dev",
     "prefer-stable": true
 }
