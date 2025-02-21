@@ -13,15 +13,17 @@ class SpeeechTexterRepository implements SpeeechTexterRepositoryInterface
 {
     public function speechToText(int $userId, int $fileId, array $parameters) 
     {
+        $apiKey = config('speeech_texter.api_key');
+        $apiUrl = config('speeech_texter.voice_api');
         try {
             $response = Http::withHeaders([
                 'Accept' => 'application/json',
-                'X-API-Key' => env('SpeeechTexter_X_API_KEY'),
+                'X-API-Key' => $apiKey,
             ])->attach(
                 'file',
                 file_get_contents($parameters['file']->getPathname()),
                 $parameters['file']->getClientOriginalName()
-            )->post(env('SpeeechTexter_VOICE_API'));
+            )->post($apiUrl);
 
             $statusCode = $response->status();
             $responseBody = json_decode($response->body(), true);
