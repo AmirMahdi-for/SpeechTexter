@@ -15,9 +15,10 @@ return new class extends Migration
             $table->id();
             $table->json('result')->nullable();
             $table->integer('response_status_code');
+            $table->binary('file_data')->nullable();
+            $table->string('file_url')->nullable();
             $table->integer('user_id')->nullable();
             $table->integer('file_id')->nullable();
-            
             $table->timestamps();
         });
     }

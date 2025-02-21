@@ -10,7 +10,7 @@ class SpeeechTexter extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'file_id', 'file_url', 'file', 'result', 'response_status_code'];
+    protected $fillable = ['user_id', 'file_id', 'file_url', 'file_data', 'result', 'response_status_code'];
 
     protected $casts = [
         'result' => 'json',
