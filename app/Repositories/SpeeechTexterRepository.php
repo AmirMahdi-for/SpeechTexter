@@ -20,53 +20,58 @@ class SpeeechTexterRepository implements SpeeechTexterRepositoryInterface
 
         try {
             if (isset($parameters['file_url'])) {
-                // Fetch file content from the URL and store it in cache (RAM)
+                // Fetch file content from the URL and store it in cache
                 $fileContent = Http::get($parameters['file_url'])->body();
-                $fileName = 'temp_' . Str::random(10); // File name doesn't need extension if we aren't concerned with the file type
-
-                // Store file content in cache
-                Cache::put($fileName, $fileContent, 3600); // The third parameter is the TTL (Time To Live)
-
-                // You can use the cache file data directly in the request
-                $fileData = Cache::get($fileName); // Fetch the file content from cache
-
+                $fileName = 'temp_' . Str::random(10); // No need for extension
+        
+                // Store file content in cache as binary
+                Cache::put($fileName, base64_encode($fileContent), 3600); // Store as base64 to preserve integrity
+        
+                // Fetch file content from cache and decode it
+                $fileData = base64_decode(Cache::get($fileName));
             } else {
-                // Handle the case where the file is uploaded via the form
+                // Handle uploaded file
                 $fileData = file_get_contents($parameters['file']->getPathname());
                 $fileName = $parameters['file']->getClientOriginalName();
             }
-
+        
             // Send the file to the Speech-to-Text API
             $response = Http::withHeaders([
                 'Accept' => 'application/json',
                 'X-API-Key' => $apiKey,
             ])->attach(
-                'file', $fileData, $fileName // Send the file content directly from cache or input
+                'file', $fileData, $fileName
             )->post($apiUrl);
-
-            // After processing, we can delete the cache if it was used
+        
+            // Cleanup cache after processing
             if (isset($parameters['file_url'])) {
-                Cache::forget($fileName); // Clean up cache after processing
+                Cache::forget($fileName);
             }
-
+        
             $statusCode = $response->status();
             $responseBody = json_decode($response->body(), true);
-
+        
             dispatch(new StoreSpeechResultJob($fileId, $responseBody, $statusCode));
-
+        
             return response()->json([
                 'message' => 'Processing started. The result will be available soon.',
                 'status' => $statusCode,
                 'data' => $responseBody
             ], 202);
-
+        
         } catch (\Exception $e) {
             Log::error("Error processing speech-to-text: " . $e->getMessage(), ['exception' => $e]);
-
+        
+            // Ensure cache cleanup on failure
+            if (isset($parameters['file_url'])) {
+                Cache::forget($fileName);
+            }
+        
             return response()->json([
                 'message' => 'An error occurred during the speech-to-text process.',
                 'error' => $e->getMessage(),
             ], 500);
         }
+        
     }
 }
