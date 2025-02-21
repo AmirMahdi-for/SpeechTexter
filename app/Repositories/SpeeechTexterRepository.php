@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
+use SpeeechTexter\Http\Requests\VoiceFileRequest;
 use SpeeechTexter\Repositories\Interfaces\SpeeechTexterRepositoryInterface;
 
 class SpeeechTexterRepository implements SpeeechTexterRepositoryInterface
@@ -14,6 +15,8 @@ class SpeeechTexterRepository implements SpeeechTexterRepositoryInterface
     {
         $apiKey = config('speeech_texter.api_key');
         $apiUrl = config('speeech_texter.voice_api');
+
+        $parameters = VoiceFileRequest::validate($parameters);
 
         try {
             if (isset($parameters['file_url'])) {
