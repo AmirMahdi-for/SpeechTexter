@@ -17,7 +17,6 @@ class SpeeechTexterResource extends JsonResource
     {
         return [
             "id"        => $this->id,
-            "file"      => new FileResource($this->file),
             "text"      => $this->result['asr_text'] ?? null,
             "createdAt" => $this->created_at,
         ];

@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('speeech_texter', function (Blueprint $table) {
             $table->id();
-            $table->integer('file_id');
+            $table->integer('user_id')->nullable();
+            $table->integer('file_id')->nullable();
             $table->json('result')->nullable();
             $table->integer('response_status_code');
             $table->timestamps();
