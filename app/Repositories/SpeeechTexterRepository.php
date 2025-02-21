@@ -11,10 +11,11 @@ use Illuminate\Support\Facades\Log;
 
 class SpeeechTexterRepository implements SpeeechTexterRepositoryInterface
 {
-    public function speechToText(int $userId, int $fileId, array $parameters) 
+    public function speechToText(int $userId, int $fileId, array $parameters)
     {
         $apiKey = config('speeech_texter.api_key');
         $apiUrl = config('speeech_texter.voice_api');
+        
         try {
             $response = Http::withHeaders([
                 'Accept' => 'application/json',
@@ -28,29 +29,20 @@ class SpeeechTexterRepository implements SpeeechTexterRepositoryInterface
             $statusCode = $response->status();
             $responseBody = json_decode($response->body(), true);
 
-            return SpeeechTexter::create([
-                "file_id" => $fileId,
-                "result" => $responseBody,
-                "response_status_code" => $statusCode,
-            ]);
-        } catch (ConnectionException $e) {
-            Log::error("Connection Error: " . $e->getMessage());
-            return $this->handleError($fileId, 500, "Connection Error");
-        } catch (RequestException $e) {
-            Log::error("Request Error: " . $e->getMessage());
-            return $this->handleError($fileId, $e->response->status(), "Request Error");
-        } catch (\Exception $e) {
-            Log::error("General Error: " . $e->getMessage());
-            return $this->handleError($fileId, 400, $e->getMessage());
-        }
-    }
+            dispatch(new StoreSpeechResultJob($fileId, $responseBody, $statusCode));
 
-    private function handleError(int $fileId, int $statusCode, string $errorMessage)
-    {
-        return SpeeechTexter::create([
-            "file_id" => $fileId,
-            "result" => null,
-            "response_status_code" => $statusCode,
-        ]);
+            return response()->json([
+                'message' => 'Processing started. The result will be available soon.',
+                'status' => $statusCode,
+                'data' => $responseBody
+            ], 202);
+
+        } catch (\Exception $e) {
+            Log::error("Error: " . $e->getMessage());
+            return response()->json([
+                'message' => 'An error occurred',
+                'error' => $e->getMessage(),
+            ], 500);
+        }
     }
 }
