@@ -17,10 +17,12 @@ class SpeeechTexter extends Model
     ];
 
     public function file(): BelongsTo {
-        return $this->belongsTo(File::class);
+        $fileModel = config('speeech-texter.file_model');
+        return $this->belongsTo($fileModel);
     }
-
+    
     public function user(): BelongsTo {
-        return $this->belongsTo(User::class);
+        $userModel = config('speeech-texter.user_model');
+        return $this->belongsTo($userModel);
     }
 }
