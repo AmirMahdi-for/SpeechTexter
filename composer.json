@@ -1,5 +1,5 @@
 {
-    "name": "jackal/speeech-texter",
+    "name": "caraxes/speeech-texter",
     "description": "A Laravel package for speech-to-text processing.",
     "type": "library",
     "license": "MIT",
