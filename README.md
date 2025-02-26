@@ -1,6 +1,6 @@
-# SpeeechTexter Laravel Package
+# SpeechTexter Laravel Package
 
-SpeeechTexter is a Laravel package that simplifies speech-to-text processing by integrating with external services. This package provides an easy way to store, manage, and retrieve transcribed audio files while allowing full flexibility in configuring dependencies such as user and file models.
+SpeechTexter is a Laravel package that simplifies speech-to-text processing by integrating with external services. This package provides an easy way to store, manage, and retrieve transcribed audio files while allowing full flexibility in configuring dependencies such as user and file models.
 
 ## 🚀 Features
 - Seamless speech-to-text integration
@@ -18,36 +18,36 @@ This package integrates with the **ussistant** speech recognition service for Pe
 You can install this package via Composer:
 
 ```bash
-composer require caraxes/speeech-texter
+composer require caraxes/speech-texter
 ```
 
 After installation, publish the package configuration:
 
 ```bash
-php artisan vendor:publish --tag=speeech-texter-config
+php artisan vendor:publish --tag=speech-texter-config
 ```
 
-### Example `config/speeech-texter.php`:
+### Example `config/speech-texter.php`:
 
 ```php
 return [
-    'api_key' => env('SPEEECH_TEXTER_X_API_KEY'),
-    'voice_api' => env('SPEEECH_TEXTER_VOICE_API'),
-    'prefix' => 'speeech-texter',
-    'user_model' => env('SPEEECH_TEXTER_USER_MODEL', 'App\Models\User'),
-    'file_model' => env('SPEEECH_TEXTER_FILE_MODEL', 'App\Models\File'),
+    'api_key' => env('SPEECH_TEXTER_X_API_KEY'),
+    'voice_api' => env('SPEECH_TEXTER_VOICE_API'),
+    'prefix' => 'speech-texter',
+    'user_model' => env('SPEECH_TEXTER_USER_MODEL', 'App\Models\User'),
+    'file_model' => env('SPEECH_TEXTER_FILE_MODEL', 'App\Models\File'),
 ];
 ```
 
 ## 🔧 Usage
 
 ### 1️⃣ Storing a Speech-to-Text Request
-To store a new request, simply create a new `SpeeechTexter` model instance:
+To store a new request, simply create a new `SpeechTexter` model instance:
 
 ```php
-use SpeeechTexter\Models\SpeeechTexter;
+use SpeechTexter\Models\SpeechTexter;
 
-$record = SpeeechTexter::create([
+$record = SpeechTexter::create([
     'user_id' => auth()->id(),
     'file_id' => $fileId,
     'file_url' => $fileUrl,
@@ -61,16 +61,16 @@ $record = SpeeechTexter::create([
 To get the transcribed result of a specific file:
 
 ```php
-$record = SpeeechTexter::find($id);
+$record = SpeechTexter::find($id);
 echo $record->result;
 ```
 
 ### 3️⃣ Handling Speech-to-Text Requests in the Repository
 
 ```php
-use SpeeechTexter\Repositories\SpeeechTexterRepository;
+use SpeechTexter\Repositories\SpeechTexterRepository;
 
-$speechTexterRepo = new SpeeechTexterRepository();
+$speechTexterRepo = new SpeechTexterRepository();
 $response = $speechTexterRepo->speechToText($userId, $fileId, [
     'file' => $uploadedFile,
 ]);
@@ -86,9 +86,9 @@ $file = $record->file;
 ### 5️⃣ Validating Inputs
 
 ```php
-use SpeeechTexter\Validators\SpeeechTexterValidator;
+use SpeechTexter\Validators\SpeechTexterValidator;
 
-$validator = new SpeeechTexterValidator();
+$validator = new SpeechTexterValidator();
 $validator->validate($data);
 ```
 
@@ -97,7 +97,7 @@ Make sure Laravel detects the service provider automatically:
 
 ```php
 'providers' => [
-    SpeeechTexter\Providers\SpeeechTexterServiceProvider::class,
+    SpeechTexter\Providers\SpeechTexterServiceProvider::class,
 ],
 ```
 

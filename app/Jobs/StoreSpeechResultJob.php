@@ -8,7 +8,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-use SpeeechTexter\Models\SpeeechTexter;
+use SpeechTexter\Models\SpeechTexter;
 
 class StoreSpeechResultJob implements ShouldQueue
 {
@@ -35,7 +35,7 @@ class StoreSpeechResultJob implements ShouldQueue
      */
     public function handle(): void
     {
-        SpeeechTexter::create([
+        SpeechTexter::create([
             "file_id" => $this->fileId,
             "result" => $this->responseBody,
             "response_status_code" => $this->statusCode,

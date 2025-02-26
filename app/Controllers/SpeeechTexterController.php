@@ -1,15 +1,15 @@
 <?php
 
-namespace SpeeechTexter\Controllers;
+namespace SpeechTexter\Controllers;
 
 use App\Http\Controllers\Controller;
-use SpeeechTexter\Repositories\Interfaces\SpeeechTexterRepositoryInterface;
+use SpeechTexter\Repositories\Interfaces\SpeechTexterRepositoryInterface;
 
-class SpeeechTexterController extends Controller
+class SpeechTexterController extends Controller
 {
-    private SpeeechTexterRepositoryInterface $repository;
+    private SpeechTexterRepositoryInterface $repository;
     
-    public function __construct(SpeeechTexterRepositoryInterface $repository) 
+    public function __construct(SpeechTexterRepositoryInterface $repository) 
     {
         $this->repository = $repository;
     }

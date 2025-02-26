@@ -1,8 +1,8 @@
 <?php
 
-namespace SpeeechTexter\Repositories\Interfaces;
+namespace SpeechTexter\Repositories\Interfaces;
 
-interface SpeeechTexterRepositoryInterface
+interface SpeechTexterRepositoryInterface
 {
     public function speechToText(int $userId, int $fileId, array $parameters);
 }

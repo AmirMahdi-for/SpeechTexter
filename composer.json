@@ -1,17 +1,17 @@
 {
-    "name": "caraxes/speeech-texter",
+    "name": "caraxes/speech-texter",
     "description": "A Laravel package for speech-to-text processing.",
     "type": "library",
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "SpeeechTexter\\": "app/"
+            "SpeechTexter\\": "app/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "SpeeechTexter\\Providers\\SpeeechTexterServiceProvider"
+                "SpeechTexter\\Providers\\SpeechTexterServiceProvider"
             ]
         }
     },

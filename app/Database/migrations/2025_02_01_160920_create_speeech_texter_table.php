@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('speeech_texter', function (Blueprint $table) {
+        Schema::create('speech_texter', function (Blueprint $table) {
             $table->id();
             $table->json('result')->nullable();
             $table->integer('response_status_code');
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('speeech_texter');
+        Schema::dropIfExists('speech_texter');
     }
 };

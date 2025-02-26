@@ -1,12 +1,12 @@
 <?php
 
-namespace SpeeechTexter\Resources\Admin\Paginated;
+namespace SpeechTexter\Resources\Admin\Paginated;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
-use SpeeechTexter\Resources\Admin\SpeeechTexterResource;
+use SpeechTexter\Resources\Admin\SpeechTexterResource;
 
-class SpeeechTextersResource extends JsonResource
+class SpeechTextersResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,7 +16,7 @@ class SpeeechTextersResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'data' =>  SpeeechTexterResource::collection($this),
+            'data' =>  SpeechTexterResource::collection($this),
             'current_page' => $this->currentPage(),
             'first_page_url' => $this->url(1),
             'from' => $this->firstItem(),

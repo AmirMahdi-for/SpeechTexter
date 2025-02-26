@@ -31,11 +31,11 @@ jobs:
       - name: Install Laravel 11 🛠️
         run: composer create-project --prefer-dist laravel/laravel laravel-app "11.*"
 
-      - name: Install speeech-texter Package 📚
+      - name: Install speech-texter Package 📚
         run: |
           cd laravel-app
-          composer config repositories.speeech-texter path ../
-          composer require caraxes/speeech-texter:dev-main
+          composer config repositories.speech-texter path ../
+          composer require caraxes/speech-texter:dev-main
 
       - name: Install Dependencies 📚
         run: cd laravel-app && composer install --prefer-dist --no-progress --no-suggest --dev

@@ -1,8 +1,8 @@
 <?php
 
-use App\Services\SpeeechTexter\Controllers\SpeeecTexterController;
+use App\Services\SpeechTexter\Controllers\SpeeecTexterController;
 use Illuminate\Support\Facades\Route;
-use SpeeechTexter\Controllers\SpeeechTexterController;
+use SpeechTexter\Controllers\SpeechTexterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,10 +15,10 @@ use SpeeechTexter\Controllers\SpeeechTexterController;
 |
 */
 
-Route::prefix('SpeeechTexter')->group(function () {
+Route::prefix('SpeechTexter')->group(function () {
     
     Route::prefix('admin')->middleware('auth:sanctum')->group(function () {
-        Route::get('list',  [SpeeechTexterController::class, 'list']);
+        Route::get('list',  [SpeechTexterController::class, 'list']);
     });
 
 });

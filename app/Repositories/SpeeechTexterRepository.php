@@ -1,20 +1,20 @@
 <?php
 
-namespace SpeeechTexter\Repositories;
+namespace SpeechTexter\Repositories;
 
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
-use SpeeechTexter\Http\Requests\VoiceFileRequest;
-use SpeeechTexter\Repositories\Interfaces\SpeeechTexterRepositoryInterface;
+use SpeechTexter\Http\Requests\VoiceFileRequest;
+use SpeechTexter\Repositories\Interfaces\SpeechTexterRepositoryInterface;
 
-class SpeeechTexterRepository implements SpeeechTexterRepositoryInterface
+class SpeechTexterRepository implements SpeechTexterRepositoryInterface
 {
     public function speechToText(int $userId, int $fileId, array $parameters)
     {
-        $apiKey = config('speeech_texter.api_key');
-        $apiUrl = config('speeech_texter.voice_api');
+        $apiKey = config('speech_texter.api_key');
+        $apiUrl = config('speech_texter.voice_api');
 
         $parameters = VoiceFileRequest::validate($parameters);
 

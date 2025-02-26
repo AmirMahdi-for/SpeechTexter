@@ -1,12 +1,12 @@
 <?php
 
-namespace SpeeechTexter\Models;
+namespace SpeechTexter\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class SpeeechTexter extends Model
+class SpeechTexter extends Model
 {
     use HasFactory;
 
@@ -17,12 +17,12 @@ class SpeeechTexter extends Model
     ];
 
     public function file(): BelongsTo {
-        $fileModel = config('speeech-texter.file_model');
+        $fileModel = config('speech-texter.file_model');
         return $this->belongsTo($fileModel);
     }
     
     public function user(): BelongsTo {
-        $userModel = config('speeech-texter.user_model');
+        $userModel = config('speech-texter.user_model');
         return $this->belongsTo($userModel);
     }
 }

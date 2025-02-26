@@ -9,12 +9,12 @@ class ComposerStaticInite29963a1c4e76e8dc367d33b6c726b64
     public static $prefixLengthsPsr4 = array (
         'S' => 
         array (
-            'SpeeechTexter\\' => 14,
+            'SpeechTexter\\' => 13,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'SpeeechTexter\\' => 
+        'SpeechTexter\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app',
         ),

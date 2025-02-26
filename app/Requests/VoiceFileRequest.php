@@ -1,6 +1,6 @@
 <?php
 
-namespace SpeeechTexter\Http\Requests;
+namespace SpeechTexter\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
