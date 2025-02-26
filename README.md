@@ -14,7 +14,7 @@ SpeeechTexter is a Laravel package that simplifies speech-to-text processing by 
 ## 📦 Installation
 You can install this package via Composer:
 ```bash
-composer require speeech-texter/speeech-texter
+composer require caraxes/speeech-texter
 ```
 
 After installation, publish the package configuration:
