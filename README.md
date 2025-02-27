@@ -114,6 +114,17 @@ To handle speech recognition requests asynchronously:
 php artisan queue:work
 ```
 
+## 🔍 Continuous Integration (CI) Tests
+This package is tested automatically using GitHub Actions with the following checks:
+
+- **Code Quality:** Static analysis with PHPStan (`level=2`) to ensure code correctness.
+- **Dependency Management:** Ensures all dependencies are installed and autoloaded correctly.
+- **Laravel Optimization:** Caches configurations and optimizes performance.
+- **Database Migrations:** Runs migrations to verify schema integrity.
+- **Queue Handling:** Configures queue driver for synchronous execution.
+
+These tests ensure the package remains stable and functional in Laravel 11 environments.
+
 ## 🔒 Security
 - Do not expose your API key in the frontend.
 - Use environment variables for API keys and secrets.

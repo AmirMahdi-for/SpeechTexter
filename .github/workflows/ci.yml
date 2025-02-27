@@ -52,6 +52,5 @@ jobs:
       - name: Set Queue Driver
         run: echo "QUEUE_CONNECTION=sync" >> laravel-app/.env
 
-
       - name: Run Static Analysis 🔍
         run: cd laravel-app && phpstan analyse app/ --level=2
