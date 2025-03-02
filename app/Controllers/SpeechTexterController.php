@@ -16,6 +16,6 @@ class SpeechTexterController extends Controller
 
     public function list() 
     {
-        return $this->repository->list();
+        return 'list';
     }
 }

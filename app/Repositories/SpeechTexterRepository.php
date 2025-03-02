@@ -2,11 +2,12 @@
 
 namespace SpeechTexter\Repositories;
 
-use App\Jobs\StoreSpeechResultJob;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
+use App\Jobs\StoreSpeechResultJob;
 use SpeechTexter\Http\Requests\VoiceFileRequest;
 use SpeechTexter\Repositories\Interfaces\SpeechTexterRepositoryInterface;
 
