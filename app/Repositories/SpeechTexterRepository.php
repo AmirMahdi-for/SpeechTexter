@@ -2,6 +2,7 @@
 
 namespace SpeechTexter\Repositories;
 
+use App\Jobs\StoreSpeechResultJob;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
@@ -51,7 +52,7 @@ class SpeechTexterRepository implements SpeechTexterRepositoryInterface
             $statusCode = $response->status();
             $responseBody = json_decode($response->body(), true);
         
-            dispatch(new StoreSpeechResultJob($fileId, $responseBody, $statusCode));
+            dispatch(new StoreSpeechResultJob($userId, $fileId, $responseBody, $statusCode));
         
             return response()->json([
                 'message' => 'Processing started. The result will be available soon.',
