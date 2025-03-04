@@ -18,7 +18,7 @@ class SpeechTexterRepository implements SpeechTexterRepositoryInterface
         $apiKey = config('speech_texter.api_key');
         $apiUrl = config('speech_texter.voice_api');
 
-        $parameters = VoiceFileRequest::validate($parameters);
+        // $parameters = VoiceFileRequest::validate($parameters);
 
         try {
             if (isset($parameters['file_url'])) {
