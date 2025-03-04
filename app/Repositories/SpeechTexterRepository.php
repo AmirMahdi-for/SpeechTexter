@@ -7,9 +7,9 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
-use App\Jobs\StoreSpeechResultJob;
-use SpeechTexter\Http\Requests\VoiceFileRequest;
+use SpeechTexter\Jobs\StoreSpeechResultJob;
 use SpeechTexter\Repositories\Interfaces\SpeechTexterRepositoryInterface;
+use SpeechTexter\Requests\VoiceFileRequest;
 
 class SpeechTexterRepository implements SpeechTexterRepositoryInterface
 {
@@ -18,7 +18,7 @@ class SpeechTexterRepository implements SpeechTexterRepositoryInterface
         $apiKey = config('speech_texter.api_key');
         $apiUrl = config('speech_texter.voice_api');
 
-        // $parameters = VoiceFileRequest::validate($parameters);
+        $parameters = VoiceFileRequest::validate($parameters);
 
         try {
             if (isset($parameters['file_url'])) {
