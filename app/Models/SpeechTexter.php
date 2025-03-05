@@ -10,6 +10,8 @@ class SpeechTexter extends Model
 {
     use HasFactory;
 
+    protected $table = 'speech_texter';
+
     protected $fillable = ['user_id', 'file_id', 'file_url', 'file_data', 'result', 'response_status_code'];
 
     protected $casts = [
