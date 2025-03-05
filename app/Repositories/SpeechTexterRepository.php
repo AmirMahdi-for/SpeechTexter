@@ -13,12 +13,15 @@ use SpeechTexter\Requests\VoiceFileRequest;
 
 class SpeechTexterRepository implements SpeechTexterRepositoryInterface
 {
-    public function speechToText(int $userId, int $fileId, array $parameters)
+    public function speechToText(int $userId, int $fileId, $parameters)
     {
         $apiKey = config('speech-texter.api_key');
         $apiUrl = config('speech-texter.voice_api');
 
-        $parameters = (new VoiceFileRequest())->validate($parameters);
+        $parameters = request()->validate([
+            'file_url' => ['nullable', 'url', 'regex:/\.(mp3|wav|webm|ogg|aac|flac|m4a|amr)$/i'],
+            'file'     => ['nullable', 'file', 'max:10240', 'mimes:mp3,wav,webm,ogg,aac,flac,m4a,amr'],
+        ]);
 
         try {
             $fileData = $this->getFileData($parameters);
